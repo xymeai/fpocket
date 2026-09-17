@@ -11,6 +11,9 @@ license = "MIT"
 requires-python = ">=3.12"
 dependencies = ["cffi>=1.17"]
 
+[project.scripts]
+fpocket = "fpocket.cli:_entry"
+
 [project.urls]
 Repository = "https://github.com/xymeai/fpocket"
 
