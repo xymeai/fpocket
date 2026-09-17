@@ -2,10 +2,10 @@ name: Build wheels
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     tags: ["[0-9]*"]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 env:
