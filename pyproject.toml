@@ -1,0 +1,32 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "cffi>=1.17"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "fpocket"
+version = "4.2.3"
+description = "Python bindings for fpocket protein pocket detection"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = ["cffi>=1.17"]
+
+[project.urls]
+Repository = "https://github.com/xymeai/fpocket"
+
+[tool.scikit-build]
+wheel.packages = ["python/fpocket"]
+cmake.build-type = "Release"
+wheel.install-dir = "fpocket"
+
+# Install the shared library next to the Python package
+[tool.scikit-build.cmake.define]
+CMAKE_INSTALL_PREFIX = "/"
+
+
+[tool.cibuildwheel]
+build = "cp312-* cp313-* cp314-*"
+skip = "*-win* *-musllinux* *i686* *-macos*"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64"]

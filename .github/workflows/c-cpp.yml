@@ -2,27 +2,30 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build-and-test-linux:
-    runs-on: ubuntu-latest
+    runs-on: xcp-medium-4g
+    container:
+      image: harbor.svc.xyme.cloud/xcp/test-runner:python
     steps:
-    - uses: actions/checkout@v2
-    - name: netcdf
-      run: sudo apt-get install libnetcdf-dev
-    - name: make
-      run: make fpocket
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.12
-    - name: create conda environment
-      run: conda env update -f ./tests/environment.yml   
-    - name : activate
-      run : |
-            eval "$(conda shell.bash hook)"
-            conda activate fpocket_test
-            pytest
+      - name: Checkout repo
+        uses: xymeai/xyme-github-actions/checkout@main
+
+      - name: Install system dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends gcc g++ make libnetcdf-dev
+          rm -rf /var/lib/apt/lists/*
+
+      - name: Build fpocket
+        run: make fpocket
+
+      - name: Install test dependencies
+        run: uv pip install --system pytest numpy
+
+      - name: Run tests
+        run: pytest

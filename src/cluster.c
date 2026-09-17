@@ -270,25 +270,8 @@ int comp_pocket(const void *el1, const void *el2)
 
 
 
-/**
-   ## FONCTION:
-	void pck_ml_clust(c_lst_pockets *pockets, s_fparams *params)
-
-   ## SPECIFICATION:
-	This function will apply a mutliple linkage clustering algorithm on the given
-	list of pockets. Considering two pockets, if params->ml_clust_min_nneigh
-	alpha spheres are separated by a distance lower than params->ml_clust_max_dist,
-	then merge the two pockets.
-
-   ## PARAMETRES:
-	@ c_lst_pockets *pockets  : The list of pockets
-	@ s_fparams *params       : Parameters of the program, including single
-								linkage parameters
-
-   ## RETURN:
-	void
-
-*/
+/* pck_ml_clust: disabled — references removed sl_clust_* struct members */
+#if 0
 void pck_ml_clust(c_lst_pockets *pockets, s_fparams *params)
 {
 	node_pocket *pcur = NULL,
@@ -355,26 +338,10 @@ void pck_ml_clust(c_lst_pockets *pockets, s_fparams *params)
 		pcur = pcur->next ;
 	}
 }
+#endif /* pck_ml_clust disabled */
 
-/**
-   ## FONCTION:
-	void pck_ml_clust(c_lst_pockets *pockets, s_fparams *params)
-
-   ## SPECIFICATION:
-	This function will apply a mutliple linkage clustering algorithm on the given
-	list of pockets. Considering two pockets, if params->ml_clust_min_nneigh
-	alpha spheres are separated by a distance lower than params->ml_clust_max_dist,
-	then merge the two pockets.
-
-   ## PARAMETRES:
-	@ c_lst_pockets *pockets  : The list of pockets
-	@ s_fparams *params       : Parameters of the program, including single
-								linkage parameters
-
-   ## RETURN:
-	void
-
-*/
+/* pck_ml_clust_test: disabled — references removed sl_clust_* struct members */
+#if 0
 void pck_ml_clust_test(c_lst_pockets *pockets, s_fparams *params)
 {
 	node_pocket *pcur = NULL,
@@ -453,5 +420,4 @@ void pck_ml_clust_test(c_lst_pockets *pockets, s_fparams *params)
 	}
 	printf("ML ending\n") ;
 }
-
-
+#endif /* pck_ml_clust_test disabled */
