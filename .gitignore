@@ -6,3 +6,8 @@ src/qhull/lib/libqhullstatic_r.a
 src/qhull/lib/libqhullstatic.a
 *.pyc
 vmd/plugins
+build/
+.venv/
+wheelhouse/
+dist/
+*.egg-info/
