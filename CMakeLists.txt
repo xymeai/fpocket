@@ -95,7 +95,7 @@ target_compile_definitions(fpocket_core PRIVATE
     MNO_MEM_DEBUG
     MD_NOT_USE_GSL
 )
-target_compile_options(fpocket_core PRIVATE -O2 -std=gnu99)
+target_compile_options(fpocket_core PRIVATE -O2 -std=gnu99 -Wno-incompatible-pointer-types -fPIC)
 
 # Build the C wrapper as a shared library for CFFI
 add_library(fpocket_wrapper SHARED python/fpocket_wrapper.c)
